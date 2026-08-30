@@ -1,562 +1,1234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رزومه محمدمهدی خدابنده - توسعه‌دهنده نرم‌افزار</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Vazirmatn', sans-serif; background: #0a0a0a; color: #e5e7eb; overflow-x: hidden; }
-        
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        
-        .nav-link { position: relative; transition: all 0.3s ease; }
-        .nav-link::after { content: ''; position: absolute; bottom: -5px; right: 0; width: 0; height: 2px; background: linear-gradient(90deg, #667eea, #764ba2); transition: width 0.3s ease; }
-        .nav-link:hover::after { width: 100%; }
-        
-        .hero-particles { position: absolute; width: 100%; height: 100%; overflow: hidden; }
-        .particle { position: absolute; background: rgba(102, 126, 234, 0.5); border-radius: 50%; animation: float 15s infinite; }
-        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-100px) rotate(180deg); } }
-        
-        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .card-hover:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px -12px rgba(102, 126, 234, 0.3); }
-        
-        .skill-card { background: linear-gradient(145deg, #1a1a1a, #2a2a2a); border: 1px solid #333; transition: all 0.3s ease; }
-        .skill-card:hover { border-color: #667eea; box-shadow: 0 0 20px rgba(102, 126, 234, 0.4); }
-        
-        .progress-ring { transition: stroke-dashoffset 1s ease; }
-        
-        .typing-effect::after { content: '|'; animation: blink 0.7s infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-        
-        .section-reveal { opacity: 0; transform: translateY(50px); transition: all 0.8s ease; }
-        .section-reveal.active { opacity: 1; transform: translateY(0); }
-        
-        .timeline-line { position: absolute; right: 0; top: 0; height: 100%; width: 2px; background: linear-gradient(180deg, #667eea, #764ba2); }
-        .timeline-dot { position: absolute; right: -9px; width: 18px; height: 18px; border-radius: 50%; background: #667eea; box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.8); } 50% { box-shadow: 0 0 30px rgba(102, 126, 234, 1); } }
-        
-        .glow-button { position: relative; overflow: hidden; }
-        .glow-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.5s; }
-        .glow-button:hover::before { left: 100%; }
-        
-        .lang-switch { position: fixed; top: 100px; left: 20px; z-index: 100; background: rgba(102, 126, 234, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(102, 126, 234, 0.3); padding: 10px 20px; border-radius: 50px; transition: all 0.3s; }
-        .lang-switch:hover { background: rgba(102, 126, 234, 0.2); transform: scale(1.05); }
-    </style>
-</head>
-<body>
-    <!-- Language Switch Button -->
-    <a href="resume-en.html" class="lang-switch">
-        <i class="fas fa-language"></i> EN
-    </a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محمدمهدی خدابنده — توسعه‌دهنده نرم‌افزار (.NET)</title>
+    <meta
+      name="description"
+      content="رزومه محمدمهدی خدابنده، توسعه‌دهنده نرم‌افزار با تمرکز بر پلتفرم مایکروسافت و اکوسیستم .NET."
+    />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Skip link -->
+    <a class="skip-link" href="#main" data-i18n="a11y.skip"
+      >پرش به محتوای اصلی</a
+    >
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold gradient-text">
-                    <span class="hidden md:inline">محمدمهدی خدابنده</span>
-                    <span class="md:hidden">مهدی ام</span>
-                </div>
-                <div class="hidden md:flex space-x-8 space-x-reverse">
-                    <a href="#home" class="nav-link text-gray-300 hover:text-white">خانه</a>
-                    <a href="#about" class="nav-link text-gray-300 hover:text-white">درباره من</a>
-                    <a href="#skills" class="nav-link text-gray-300 hover:text-white">مهارت‌ها</a>
-                    <a href="#experience" class="nav-link text-gray-300 hover:text-white">سوابق</a>
-                    <a href="#education" class="nav-link text-gray-300 hover:text-white">تحصیلات</a>
-                    <a href="#contact" class="nav-link text-gray-300 hover:text-white">تماس</a>
-                </div>
-                <button class="md:hidden text-gray-300" id="menuBtn">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
+    <!-- Icon sprite (line-icon system, decorative, referenced via <use>) -->
+    <svg style="display: none" aria-hidden="true">
+      <defs>
+        <symbol id="i-menu" viewBox="0 0 24 24">
+          <path
+            d="M4 6H20 M4 12H20 M4 18H20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="i-close" viewBox="0 0 24 24">
+          <path
+            d="M6 6L18 18 M18 6L6 18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="i-chevron" viewBox="0 0 24 24">
+          <path
+            d="M6 9L12 15L18 9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24">
+          <path
+            d="M12 21s7-7.4 7-12.2A7 7 0 0 0 5 8.8C5 13.6 12 21 12 21z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <circle
+            cx="12"
+            cy="8.8"
+            r="2.4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+        </symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24">
+          <rect
+            x="3"
+            y="5.5"
+            width="18"
+            height="13"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M4 7l8 5.5L20 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24">
+          <path
+            d="M7 3.5H10.2L11.6 7.3L9.6 9C10.5 11 12 12.5 14 13.4L15.7 11.4L19.5 12.8V16A1.5 1.5 0 0 1 18 17.5C11.6 17.2 6.8 12.4 6.5 6A1.5 1.5 0 0 1 7 3.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="i-globe" viewBox="0 0 24 24">
+          <circle
+            cx="12"
+            cy="12"
+            r="8.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M3.5 12H20.5 M12 3.5C14.8 6.4 14.8 17.6 12 20.5 M12 3.5C9.2 6.4 9.2 17.6 12 20.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+        </symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24">
+          <rect
+            x="3"
+            y="7.5"
+            width="18"
+            height="11.5"
+            rx="1.8"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M8.5 7.5V6a1.8 1.8 0 0 1 1.8-1.8h3.4A1.8 1.8 0 0 1 15.5 6v1.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path d="M3 12.5H21" stroke="currentColor" stroke-width="1.6" />
+        </symbol>
+        <symbol id="i-cap" viewBox="0 0 24 24">
+          <path
+            d="M2.5 9L12 4.5L21.5 9L12 13.5L2.5 9Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6.5 11V15C6.5 16.4 9 17.5 12 17.5C15 17.5 17.5 16.4 17.5 15V11"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 9.5V15"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="i-layers" viewBox="0 0 24 24">
+          <path
+            d="M12 3.5L21 8.5L12 13.5L3 8.5L12 3.5Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M3 13L12 18L21 13"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <!-- Backend / Server -->
+        <symbol id="i-server" viewBox="0 0 24 24">
+          <rect
+            x="3"
+            y="4"
+            width="18"
+            height="6"
+            rx="1.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <rect
+            x="3"
+            y="14"
+            width="18"
+            height="6"
+            rx="1.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <circle cx="7" cy="7" r="0.9" fill="currentColor" />
+          <circle cx="7" cy="17" r="0.9" fill="currentColor" />
+          <path
+            d="M11 7H18M11 17H18"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <!-- Database -->
+        <symbol id="i-database" viewBox="0 0 24 24">
+          <ellipse
+            cx="12"
+            cy="5.5"
+            rx="8"
+            ry="3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M4 5.5V12C4 13.7 7.6 15 12 15C16.4 15 20 13.7 20 12V5.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M4 12V18.5C4 20.2 7.6 21.5 12 21.5C16.4 21.5 20 20.2 20 18.5V12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+        </symbol>
+        <!-- Shield / Security -->
+        <symbol id="i-shield" viewBox="0 0 24 24">
+          <path
+            d="M12 3L19 6V11.5C19 16 16.2 19.5 12 21C7.8 19.5 5 16 5 11.5V6L12 3Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M8.5 12L10.8 14.3L15.8 9.3"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <!-- Monitor / Frontend -->
+        <symbol id="i-monitor" viewBox="0 0 24 24">
+          <rect
+            x="3"
+            y="4"
+            width="18"
+            height="13"
+            rx="1.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M8 21H16M12 17V21"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <!-- Terminal / Tools -->
+        <symbol id="i-terminal" viewBox="0 0 24 24">
+          <rect
+            x="3"
+            y="4"
+            width="18"
+            height="16"
+            rx="2"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M7 9L10 12L7 15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.5 15H17"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <!-- Check / Quality -->
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M8 12L10.7 14.7L16 9.4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <!-- Compass / Familiar -->
+        <symbol id="i-compass" viewBox="0 0 24 24">
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+          />
+          <path
+            d="M14.8 9.2L13.2 13.2L9.2 14.8L10.8 10.8L14.8 9.2Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linejoin="round"
+          />
+        </symbol>
+        <symbol id="i-external" viewBox="0 0 24 24">
+          <path
+            d="M14 5H19V10"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M19 5L10.5 13.5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+          <path
+            d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5V17.5A1.5 1.5 0 0 0 6.5 19H17.5A1.5 1.5 0 0 0 19 17.5V15"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.6"
+            stroke-linecap="round"
+          />
+        </symbol>
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path
+            d="M5 12.5L10 17.5L19 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- Header -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#home" class="brand">
+          <span class="brand-full" data-i18n="brand.full"
+            >محمدمهدی خدابنده</span
+          >
+          <span class="brand-short" data-i18n="brand.short">م. خدابنده</span>
+        </a>
+
+        <nav
+          class="nav-desktop"
+          aria-label="ناوبری اصلی"
+          data-i18n-attr="aria-label:a11y.mainNav"
+        >
+          <ul class="nav-list">
+            <li>
+              <a
+                href="#home"
+                class="nav-link"
+                data-section="home"
+                data-i18n="nav.home"
+                >خانه</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="nav-link"
+                data-section="about"
+                data-i18n="nav.about"
+                >درباره من</a
+              >
+            </li>
+            <li>
+              <a
+                href="#skills"
+                class="nav-link"
+                data-section="skills"
+                data-i18n="nav.skills"
+                >مهارت‌ها</a
+              >
+            </li>
+            <li>
+              <a
+                href="#experience"
+                class="nav-link"
+                data-section="experience"
+                data-i18n="nav.experience"
+                >تجربه</a
+              >
+            </li>
+            <li>
+              <a
+                href="#education"
+                class="nav-link"
+                data-section="education"
+                data-i18n="nav.education"
+                >تحصیلات</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="nav-link"
+                data-section="contact"
+                data-i18n="nav.contact"
+                >تماس</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            type="button"
+            class="lang-toggle"
+            id="langToggle"
+            aria-label="Switch language"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-globe"></use>
+            </svg>
+            <span id="langToggleLabel">EN</span>
+          </button>
+          <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="باز کردن منو"
+            aria-expanded="false"
+            aria-controls="mobileNav"
+            data-i18n-attr="aria-label:a11y.openMenu"
+          >
+            <svg class="icon" aria-hidden="true">
+              <use href="#i-menu"></use>
+            </svg>
+          </button>
         </div>
-    </nav>
+      </div>
+    </header>
 
-    <!-- Mobile Menu -->
-    <div class="fixed inset-0 z-40 bg-black bg-opacity-95 backdrop-blur-lg hidden flex-col items-center justify-center space-y-8" id="mobileMenu">
-        <button class="absolute top-6 left-6 text-gray-300" id="closeMenu">
-            <i class="fas fa-times text-2xl"></i>
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobileNav" hidden>
+      <div class="mobile-nav-head">
+        <span class="brand-full" data-i18n="brand.full">محمدمهدی خدابنده</span>
+        <button
+          type="button"
+          class="menu-close"
+          id="menuClose"
+          aria-label="بستن منو"
+          data-i18n-attr="aria-label:a11y.closeMenu"
+        >
+          <svg class="icon" aria-hidden="true"><use href="#i-close"></use></svg>
         </button>
-        <a href="#home" class="text-2xl nav-link text-gray-300 hover:text-white">خانه</a>
-        <a href="#about" class="text-2xl nav-link text-gray-300 hover:text-white">درباره من</a>
-        <a href="#skills" class="text-2xl nav-link text-gray-300 hover:text-white">مهارت‌ها</a>
-        <a href="#experience" class="text-2xl nav-link text-gray-300 hover:text-white">سوابق</a>
-        <a href="#education" class="text-2xl nav-link text-gray-300 hover:text-white">تحصیلات</a>
-        <a href="#contact" class="text-2xl nav-link text-gray-300 hover:text-white">تماس</a>
+      </div>
+      <ul class="mobile-nav-list">
+        <li>
+          <a href="#home" class="mobile-nav-link" data-i18n="nav.home">خانه</a>
+        </li>
+        <li>
+          <a href="#about" class="mobile-nav-link" data-i18n="nav.about"
+            >درباره من</a
+          >
+        </li>
+        <li>
+          <a href="#skills" class="mobile-nav-link" data-i18n="nav.skills"
+            >مهارت‌ها</a
+          >
+        </li>
+        <li>
+          <a
+            href="#experience"
+            class="mobile-nav-link"
+            data-i18n="nav.experience"
+            >تجربه</a
+          >
+        </li>
+        <li>
+          <a href="#education" class="mobile-nav-link" data-i18n="nav.education"
+            >تحصیلات</a
+          >
+        </li>
+        <li>
+          <a href="#contact" class="mobile-nav-link" data-i18n="nav.contact"
+            >تماس</a
+          >
+        </li>
+      </ul>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="hero-particles" id="particles"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20"></div>
-        
-        <div class="relative z-10 text-center px-4 section-reveal">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6 typing-effect">محمدمهدی خدابنده</h1>
-            <div class="h-1 w-32 mx-auto gradient-bg mb-8"></div>
-            <h2 class="text-2xl md:text-3xl text-gray-300 mb-12">توسعه‌دهنده نرم‌افزار | برنامه نویس .NET</h2>
-            <div class="flex justify-center gap-4">
-                <a href="#contact" class="px-8 py-4 gradient-bg rounded-full font-medium glow-button hover:shadow-2xl transition">تماس با من</a>
-                <a href="#about" class="px-8 py-4 border-2 border-purple-500 rounded-full font-medium hover:bg-purple-500/10 transition">بیشتر بدانید</a>
+    <main id="main">
+      <!-- Hero -->
+      <section id="home" class="hero" aria-label="معرفی">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container">
+          <div class="corner-frame">
+            <span class="corner corner-tl" aria-hidden="true"></span>
+            <span class="corner corner-tr" aria-hidden="true"></span>
+            <span class="corner corner-bl" aria-hidden="true"></span>
+            <span class="corner corner-br" aria-hidden="true"></span>
+            <div class="hero-content" data-reveal>
+              <p class="eyebrow" data-i18n="hero.eyebrow">
+                توسعه‌دهنده نرم‌افزار | NET.
+              </p>
+              <h1 class="hero-name" data-i18n="brand.full">محمدمهدی خدابنده</h1>
+              <p class="hero-tagline" data-i18n="hero.tagline">
+                توسعه‌دهنده نرم‌افزار با تمرکز بر #C و اکوسیستم NET. ؛ علاقه‌مند
+                به طراحی و توسعه سیستم‌های قابل‌اعتماد، مقیاس‌پذیر و
+                قابل‌نگهداری. رویکرد من ترکیبی از حل مسئله، تفکر سیستمی و توجه
+                به کیفیت کد و معماری نرم‌افزار است.
+              </p>
+
+              <div class="hero-meta">
+                <span class="hero-meta-item"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-pin"></use></svg
+                  ><span data-i18n="hero.location">تهران، ایران</span></span
+                >
+                <span class="hero-meta-item"
+                  ><svg class="icon" aria-hidden="true">
+                    <use href="#i-cap"></use></svg
+                  ><span data-i18n="hero.studying"
+                    >دانشجوی مهندسی کامپیوتر</span
+                  ></span
+                >
+              </div>
+              <div class="hero-actions">
+                <a
+                  href="#contact"
+                  class="btn btn-primary"
+                  data-i18n="hero.ctaPrimary"
+                  >تماس با من</a
+                >
+                <a
+                  href="https://github.com/MehdiKh-hub"
+                  class="btn btn-secondary"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <span data-i18n="hero.ctaSecondary">مشاهده گیت‌هاب</span>
+                  <svg class="icon icon-sm" aria-hidden="true">
+                    <use href="#i-external"></use>
+                  </svg>
+                </a>
+              </div>
             </div>
+          </div>
         </div>
-        
-        <a href="#about" class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-3xl gradient-text"></i>
+        <a
+          href="#about"
+          class="scroll-hint"
+          aria-label="پیمایش به پایین"
+          data-i18n-attr="aria-label:a11y.scrollDown"
+        >
+          <svg class="icon" aria-hidden="true">
+            <use href="#i-chevron"></use>
+          </svg>
         </a>
-    </section>
+      </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-gradient-to-b from-black to-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="text-4xl font-bold mb-4">درباره من</h2>
-                <div class="h-1 w-24 mx-auto gradient-bg"></div>
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="kicker" data-i18n="about.kicker">درباره من</p>
+            <h2 class="section-title" data-i18n="about.heading">
+              کسی که به جزئیات اهمیت می‌دهد.
+            </h2>
+          </header>
+
+          <div class="about-grid">
+            <div class="about-media" data-reveal>
+              <div class="about-frame">
+                <span class="corner corner-tl" aria-hidden="true"></span>
+                <span class="corner corner-br" aria-hidden="true"></span>
+                <img
+                  src="MehdiKh.png"
+                  alt="محمدمهدی خدابنده"
+                  loading="lazy"
+                  width="480"
+                  height="480"
+                />
+              </div>
             </div>
 
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="md:w-1/3 section-reveal">
-                    <div class="relative">
-                        <div class="absolute inset-0 gradient-bg blur-2xl opacity-30 rounded-full"></div>
-                        <img src="MehdiKh.png" alt="MohammadMehdi Khodabandeh" class="relative rounded-3xl w-full shadow-2xl border-4 border-purple-500/30">
-                    </div>
+            <div class="about-copy" data-reveal>
+              <p data-i18n="about.p1">
+                من یک توسعه‌دهنده نرم‌افزار با بیش از یک سال تجربه عملی در ساخت
+                و توسعه اپلیکیشن‌های تحت وب هستم و تمرکز اصلی‌ام بر C#، ASP.NET
+                Core و اکوسیستم .NET قرار دارد. تجربه کار روی پروژه‌های واقعی به
+                من آموخته است که توسعه نرم‌افزار فقط انتخاب یک تکنولوژی یا نوشتن
+                کد نیست؛ بلکه مجموعه‌ای از تصمیم‌های فنی است که در کنار یکدیگر
+                کیفیت، پایداری و آینده یک محصول را شکل می‌دهند.
+              </p>
+              <p data-i18n="about.p2">
+                در کارم به دنبال ساخت راهکارهایی هستم که علاوه بر حل مسئله فعلی،
+                در برابر تغییرات آینده نیز انعطاف‌پذیر باشند. به طراحی معماری،
+                جداسازی مسئولیت‌ها، کیفیت و خوانایی کد، طراحی API، کار با داده و
+                قابلیت نگهداری سیستم اهمیت می‌دهم و تلاش می‌کنم پیچیدگی را تنها
+                زمانی وارد سیستم کنم که واقعاً ارزش ایجاد کند.
+              </p>
+              <p data-i18n="about.p3">
+                شیوه فکر کردنم در مواجهه با یک مسئله، از درک ریشه آن شروع
+                می‌شود. سعی می‌کنم مسئله را به اجزای کوچک‌تر تقسیم کنم، ارتباط
+                میان بخش‌های سیستم را ببینم، محدودیت‌ها را بشناسم و سپس راهکاری
+                انتخاب کنم که منطقی، قابل توضیح و قابل توسعه باشد. در کنار تجربه
+                عملی، یادگیری مستمر و بازنگری در تصمیم‌های فنی را بخشی از مسیر
+                حرفه‌ای خود می‌دانم؛ چون معتقدم یک مهندس نرم‌افزار خوب فقط کد
+                بهتری نمی‌نویسد، بلکه با گذشت زمان بهتر تصمیم می‌گیرد.
+              </p>
+
+              <dl class="stats">
+                <div class="stat">
+                  <dt data-i18n="about.stat1Label">سال تجربه</dt>
+                  <dd>1+</dd>
                 </div>
-                
-                <div class="md:w-2/3 section-reveal">
-                    <h3 class="text-3xl font-semibold mb-6 gradient-text">سلام! من محمدمهدی هستم</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed text-lg">
-                        توسعه‌دهنده نرم‌افزار با بیش از 2 سال تجربه در طراحی و پیاده‌سازی اپلیکیشن‌های تحت وب با تمرکز ویژه روی پلتفرم مایکروسافت و اکوسیستم .NET
-                    </p>
-                    <p class="text-gray-300 mb-8 leading-relaxed text-lg">
-                        علاقه من به برنامه‌نویسی تنها یک شغل نیست؛ بلکه راهی برای حل مسائل واقعی با تفکر سیستمی، کدنویسی تمیز و قابل توسعه است.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="card-hover bg-gradient-to-br from-purple-900/30 to-blue-900/30 p-6 rounded-2xl text-center border border-purple-500/20">
-                            <i class="fas fa-laptop-code text-4xl gradient-text mb-3"></i>
-                            <h4 class="font-bold text-xl">1+</h4>
-                            <p class="text-gray-400 text-sm">سال تجربه</p>
-                        </div>
-                        <div class="card-hover bg-gradient-to-br from-purple-900/30 to-blue-900/30 p-6 rounded-2xl text-center border border-purple-500/20">
-                            <i class="fas fa-project-diagram text-4xl gradient-text mb-3"></i>
-                            <h4 class="font-bold text-xl">3+</h4>
-                            <p class="text-gray-400 text-sm">پروژه</p>
-                        </div>
-                        <div class="card-hover bg-gradient-to-br from-purple-900/30 to-blue-900/30 p-6 rounded-2xl text-center border border-purple-500/20">
-                            <i class="fas fa-users text-4xl gradient-text mb-3"></i>
-                            <h4 class="font-bold text-xl">0+</h4>
-                            <p class="text-gray-400 text-sm">مشتری راضی</p>
-                        </div>
-                        <div class="card-hover bg-gradient-to-br from-purple-900/30 to-blue-900/30 p-6 rounded-2xl text-center border border-purple-500/20">
-                            <i class="fas fa-medal text-4xl gradient-text mb-3"></i>
-                            <h4 class="font-bold text-xl">۴</h4>
-                            <p class="text-gray-400 text-sm">گواهینامه</p>
-                        </div>
-                    </div>
+                <div class="stat">
+                  <dt data-i18n="about.stat2Label">پروژه</dt>
+                  <dd>3+</dd>
                 </div>
+                <div class="stat">
+                  <dt data-i18n="about.stat3Label">گواهینامه</dt>
+                  <dd>2</dd>
+                </div>
+              </dl>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-24 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="text-4xl font-bold mb-4">مهارت‌های من</h2>
-                <div class="h-1 w-24 mx-auto gradient-bg"></div>
+      <!-- Skills -->
+      <!-- Skills -->
+      <section id="skills" class="section section-alt">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="kicker" data-i18n="skills.kicker">مهارت‌ها</p>
+            <h2 class="section-title" data-i18n="skills.heading">پشته فنی</h2>
+            <p class="section-description" data-i18n="skills.description">
+              مجموعه‌ای از فناوری‌ها و مفاهیم مهندسی نرم‌افزار که در مسیر توسعه
+              و کار روی پروژه‌های واقعی با آن‌ها تجربه کسب کرده‌ام.
+            </p>
+          </header>
+          <div class="skills-grid">
+            <!-- Backend -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-server"></use>
+                </svg>
+                <span data-i18n="skills.cat1"> Backend & .NET </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">C#</li>
+                <li class="skill-chip">.NET</li>
+                <li class="skill-chip">ASP.NET Core</li>
+                <li class="skill-chip">ASP.NET MVC</li>
+                <li class="skill-chip">Web API</li>
+                <li class="skill-chip">Minimal API</li>
+                <li class="skill-chip">Razor Pages</li>
+                <li class="skill-chip">LINQ</li>
+                <li class="skill-chip">Async / Await</li>
+              </ul>
             </div>
-
-            <div class="grid md:grid-cols-2 gap-8 mb-16">
-                <div class="section-reveal">
-                    <h3 class="text-2xl font-semibold mb-8 gradient-text">مهارت‌های فنی</h3>
-                    <div class="space-y-6">
-                        <div class="skill-item" data-skill="80">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">C#</span>
-                                <span class="skill-percent">80%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="90">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">ASP.NET MVC و Core</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="85">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Entity Framework</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="60">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">SQL Server</span>
-                                <span class="skill-percent">60%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="50">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Docker</span>
-                                <span class="skill-percent">50%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section-reveal">
-                    <h3 class="text-2xl font-semibold mb-8 gradient-text">سایر مهارت‌ها</h3>
-                    <div class="space-y-6">
-                        <div class="skill-item" data-skill="85">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Python</span>
-                                <span class="skill-percent">85%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="75">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Django</span>
-                                <span class="skill-percent">75%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="90">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Html</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="70">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">Web API</span>
-                                <span class="skill-percent">70%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item" data-skill="90">
-                            <div class="flex justify-between mb-3">
-                                <span class="font-medium">OOP</span>
-                                <span class="skill-percent">90%</span>
-                            </div>
-                            <div class="h-3 bg-gray-800 rounded-full overflow-hidden">
-                                <div class="h-full gradient-bg skill-bar" style="width:0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Data Access -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-database"></use>
+                </svg>
+                <span data-i18n="skills.cat2"> Data & Persistence </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">SQL Server</li>
+                <li class="skill-chip">Entity Framework Core</li>
+                <li class="skill-chip">EF Core Migrations</li>
+                <li class="skill-chip">Fluent API</li>
+                <li class="skill-chip">LINQ</li>
+                <li class="skill-chip">Query Optimization</li>
+                <li class="skill-chip">Database Design</li>
+                <li class="skill-chip">Relational Databases</li>
+              </ul>
             </div>
-
-            <div class="section-reveal">
-                <h3 class="text-2xl font-semibold mb-8 text-center gradient-text">ابزارها و تکنولوژی‌ها</h3>
-                <div class="flex flex-wrap justify-center gap-6">
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-csharp-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">C#</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-dotnetcore-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">.NET Core</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-docker-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">Docker</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-microsoftsqlserver-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">SQL Server</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-python-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">Python</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-git-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">Git</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-github-original colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">GitHub</span>
-                    </div>
-                    <div class="skill-card p-6 rounded-2xl w-28 text-center card-hover">
-                        <i class="devicon-django-plain colored text-5xl mb-3"></i>
-                        <span class="text-sm font-medium">Django</span>
-                    </div>
-                </div>
+            <!-- Architecture -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-layers"></use>
+                </svg>
+                <span data-i18n="skills.cat3"> Architecture & Design </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">Clean Architecture</li>
+                <li class="skill-chip">Onion Architecture</li>
+                <li class="skill-chip">Separation of Concerns</li>
+                <li class="skill-chip">Dependency Injection</li>
+                <li class="skill-chip">SOLID Principles</li>
+                <li class="skill-chip">OOP</li>
+                <li class="skill-chip">Design Patterns</li>
+                <li class="skill-chip">Layered Architecture</li>
+              </ul>
             </div>
+            <!-- API & Security -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-shield"></use>
+                </svg>
+                <span data-i18n="skills.cat4"> API & Security </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">RESTful API</li>
+                <li class="skill-chip">JWT</li>
+                <li class="skill-chip">ASP.NET Identity</li>
+                <li class="skill-chip">Authentication</li>
+                <li class="skill-chip">Authorization</li>
+                <li class="skill-chip">Policy-based Authorization</li>
+                <li class="skill-chip">Swagger / OpenAPI</li>
+                <li class="skill-chip">HTTP / REST</li>
+              </ul>
+            </div>
+            <!-- Frontend -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-monitor"></use>
+                </svg>
+                <span data-i18n="skills.cat5"> Frontend </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">HTML5</li>
+                <li class="skill-chip">CSS3</li>
+                <li class="skill-chip">JavaScript</li>
+                <li class="skill-chip">TypeScript</li>
+                <li class="skill-chip">React</li>
+                <li class="skill-chip">Vite</li>
+                <li class="skill-chip">Responsive Design</li>
+                <li class="skill-chip">REST API Integration</li>
+              </ul>
+            </div>
+            <!-- DevOps & Tools -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-terminal"></use>
+                </svg>
+                <span data-i18n="skills.cat6"> Tools & DevOps </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">Git</li>
+                <li class="skill-chip">GitHub</li>
+                <li class="skill-chip">Docker</li>
+                <li class="skill-chip">Visual Studio</li>
+                <li class="skill-chip">VS Code</li>
+                <li class="skill-chip">Swagger</li>
+                <li class="skill-chip">Postman</li>
+              </ul>
+            </div>
+            <!-- Testing & Quality -->
+            <div class="skill-category" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-check"></use>
+                </svg>
+                <span data-i18n="skills.cat7"> Quality & Engineering </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">Unit Testing</li>
+                <li class="skill-chip">Integration Testing</li>
+                <li class="skill-chip">Debugging</li>
+                <li class="skill-chip">Refactoring</li>
+                <li class="skill-chip">Code Review</li>
+                <li class="skill-chip">Error Handling</li>
+                <li class="skill-chip">Logging</li>
+                <li class="skill-chip">Clean Code</li>
+              </ul>
+            </div>
+            <!-- Familiar -->
+            <div class="skill-category skill-category-muted" data-reveal>
+              <h3 class="skill-category-title">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-compass"></use>
+                </svg>
+                <span data-i18n="skills.cat8"> آشنایی و تجربه تکمیلی </span>
+              </h3>
+              <ul class="skill-list">
+                <li class="skill-chip">Python</li>
+                <li class="skill-chip">Django</li>
+                <li class="skill-chip">WCF</li>
+                <li class="skill-chip">ASP.NET Web Forms</li>
+                <li class="skill-chip">SignalR</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-24 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="text-4xl font-bold mb-4">سوابق کاری</h2>
-                <div class="h-1 w-24 mx-auto gradient-bg"></div>
-            </div>
-
-            <div class="max-w-4xl mx-auto section-reveal">
-                <div class="relative pr-12">
-                    <div class="timeline-line"></div>
-                    <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-purple-500/20 relative">
-                        <div class="timeline-dot"></div>
-                        <div class="flex justify-between items-start mb-4">
-                            <h3 class="text-2xl font-bold gradient-text">Junior .NET Developer</h3>
-                            <span class="bg-purple-600 text-sm px-4 py-2 rounded-full">1403 اسفند تا کنون</span>
-                        </div>
-                        <h4 class="text-xl text-purple-400 mb-4"><a href="https://refhub.ir/" class="hover:underline">شرکت رفهاب (RefHub)</a></h4>
-                        <p class="text-gray-300 leading-relaxed text-lg">
-                            مسئولیت‌های من شامل ساختار احراز هویت و داکرایز کردن پروژه با داکر دستکتاپ و همچنین مرتب کردن و واکشی اطلاعات از دیتا بیس و نمایش آن و سرچ موجودی های مختلف در لیست کتاب ها در سایت
-                        </p>
-                    </div>
+      <!-- Experience -->
+      <section id="experience" class="section">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="kicker" data-i18n="experience.kicker">تجربه</p>
+            <h2 class="section-title" data-i18n="experience.heading">
+              مسیر حرفه‌ای
+            </h2>
+            <p class="section-description" data-i18n="experience.description">
+              تجربه عملی در توسعه، نگهداری و بهبود نرم‌افزارهای تحت وب، با تمرکز
+              بر توسعه Backend و اکوسیستم .NET.
+            </p>
+          </header>
+          <ol class="timeline">
+            <!-- RefHub -->
+            <li class="timeline-item" data-reveal>
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-card">
+                <div class="timeline-top">
+                  <div>
+                    <h3
+                      class="timeline-role"
+                      data-i18n="experience.refhub.role"
+                    >
+                      توسعه‌دهنده Junior .NET
+                    </h3>
+                    <a
+                      href="https://refhub.ir/"
+                      class="timeline-company"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      RefHub
+                      <svg class="icon icon-sm" aria-hidden="true">
+                        <use href="#i-external"></use>
+                      </svg>
+                    </a>
+                  </div>
+                  <span
+                    class="timeline-date"
+                    data-i18n="experience.refhub.duration"
+                  >
+                    اسفند ۱۴۰۳ — اکنون
+                  </span>
                 </div>
-            </div>
+                <!-- Summary -->
+                <p
+                  class="timeline-summary"
+                  data-i18n="experience.refhub.summary"
+                >
+                  فعالیت در توسعه و نگهداری بخش‌هایی از یک اپلیکیشن وب، با تمرکز
+                  اصلی بر Backend و فناوری‌های مبتنی بر .NET. در این نقش، علاوه
+                  بر پیاده‌سازی قابلیت‌های جدید، در اصلاح، بهبود و توسعه کدهای
+                  موجود نیز مشارکت داشته‌ام.
+                </p>
+                <!-- Responsibilities -->
+                <div class="timeline-block">
+                  <h4
+                    class="timeline-block-title"
+                    data-i18n="experience.responsibilities"
+                  >
+                    مسئولیت‌ها و فعالیت‌ها
+                  </h4>
+                  <ul class="timeline-bullets">
+                    <li data-i18n="experience.refhub.bullet1">
+                      توسعه و پیاده‌سازی قابلیت‌های Backend با استفاده از C# و
+                      ASP.NET Core
+                    </li>
+                    <li data-i18n="experience.refhub.bullet2">
+                      طراحی و توسعه APIهای مورد نیاز بخش‌های مختلف سیستم
+                    </li>
+                    <li data-i18n="experience.refhub.bullet3">
+                      پیاده‌سازی و توسعه ساختار احراز هویت و مجوزدهی کاربران
+                    </li>
+                    <li data-i18n="experience.refhub.bullet4">
+                      کار با Entity Framework Core و SQL Server برای دسترسی،
+                      مدیریت و پردازش داده‌ها
+                    </li>
+                    <li data-i18n="experience.refhub.bullet5">
+                      طراحی و بهبود Queryها، واکشی، فیلتر، مرتب‌سازی و پردازش
+                      داده‌ها
+                    </li>
+                    <li data-i18n="experience.refhub.bullet6">
+                      پیاده‌سازی قابلیت‌های جست‌وجو و فیلتر اطلاعات در بخش‌های
+                      مختلف سیستم
+                    </li>
+                    <li data-i18n="experience.refhub.bullet7">
+                      توسعه و نگهداری ساختارهای مرتبط با دیتابیس و ارتباط میان
+                      Entityها
+                    </li>
+                    <li data-i18n="experience.refhub.bullet8">
+                      استفاده از Dependency Injection و اصول جداسازی مسئولیت‌ها
+                      در ساختار Backend
+                    </li>
+                    <li data-i18n="experience.refhub.bullet9">
+                      مشارکت در Refactoring و بهبود خوانایی، ساختار و قابلیت
+                      نگهداری کد
+                    </li>
+                    <li data-i18n="experience.refhub.bullet10">
+                      بررسی و رفع خطاهای فنی در Backend و لایه دسترسی به داده
+                    </li>
+                    <li data-i18n="experience.refhub.bullet11">
+                      استفاده از Docker برای کانتینرسازی و ساده‌تر کردن اجرای
+                      محیط پروژه
+                    </li>
+                    <li data-i18n="experience.refhub.bullet12">
+                      استفاده از Git و GitHub برای کنترل نسخه، مدیریت Branchها و
+                      همکاری روی کد
+                    </li>
+                  </ul>
+                </div>
+                <!-- Engineering -->
+                <div class="timeline-block">
+                  <h4
+                    class="timeline-block-title"
+                    data-i18n="experience.engineering"
+                  >
+                    رویکرد مهندسی
+                  </h4>
+                  <ul class="timeline-bullets">
+                    <li data-i18n="experience.refhub.engineering1">
+                      توجه به خوانایی و قابلیت نگهداری کد در کنار حل مسئله فعلی
+                    </li>
+                    <li data-i18n="experience.refhub.engineering2">
+                      تلاش برای جداسازی مسئولیت‌ها و کاهش وابستگی غیرضروری میان
+                      بخش‌های سیستم
+                    </li>
+                    <li data-i18n="experience.refhub.engineering3">
+                      استفاده از اصول OOP و مفاهیم SOLID در طراحی و توسعه
+                      بخش‌های مختلف
+                    </li>
+                    <li data-i18n="experience.refhub.engineering4">
+                      توجه به ساختار معماری و قابل توسعه بودن اجزای نرم‌افزار
+                    </li>
+                    <li data-i18n="experience.refhub.engineering5">
+                      Debugging و تحلیل خطا پیش از اعمال تغییرات در کد
+                    </li>
+                  </ul>
+                </div>
+                <!-- Technologies -->
+                <div class="timeline-block">
+                  <h4
+                    class="timeline-block-title"
+                    data-i18n="experience.technologies"
+                  >
+                    فناوری‌ها و ابزارها
+                  </h4>
+                  <ul class="tag-list">
+                    <li class="tag">C#</li>
+                    <li class="tag">.NET</li>
+                    <li class="tag">ASP.NET Core</li>
+                    <li class="tag">Web API</li>
+                    <li class="tag">Entity Framework Core</li>
+                    <li class="tag">LINQ</li>
+                    <li class="tag">SQL Server</li>
+                    <li class="tag">Docker</li>
+                    <li class="tag">Git</li>
+                    <li class="tag">GitHub</li>
+                    <li class="tag">Swagger / OpenAPI</li>
+                  </ul>
+                </div>
+                <!-- Projects -->
+                <div class="timeline-block">
+                  <h4
+                    class="timeline-block-title"
+                    data-i18n="experience.projects"
+                  >
+                    حوزه‌های کاری و پروژه‌ای
+                  </h4>
+                  <ul class="timeline-bullets">
+                    <li data-i18n="experience.refhub.project1">
+                      توسعه قابلیت‌های مرتبط با مدیریت کاربران و احراز هویت
+                    </li>
+                    <li data-i18n="experience.refhub.project2">
+                      توسعه APIها و سرویس‌های Backend برای مصرف در رابط کاربری
+                    </li>
+                    <li data-i18n="experience.refhub.project3">
+                      پیاده‌سازی منطق جست‌وجو و فیلتر داده‌ها
+                    </li>
+                    <li data-i18n="experience.refhub.project4">
+                      کار با ساختارهای داده و ارتباط میان موجودیت‌های مختلف
+                      سیستم
+                    </li>
+                    <li data-i18n="experience.refhub.project5">
+                      توسعه و اصلاح بخش‌هایی از سیستم با هدف افزایش کیفیت و
+                      قابلیت نگهداری
+                    </li>
+                  </ul>
+                </div>
+                <!-- Future achievements -->
+                <div class="timeline-block timeline-achievements">
+                  <h4
+                    class="timeline-block-title"
+                    data-i18n="experience.achievements"
+                  >
+                    دستاوردها
+                  </h4>
+                  <ul class="timeline-bullets">
+                    <li data-i18n="experience.refhub.achievement1">
+                      [بعداً با یک دستاورد قابل‌اندازه‌گیری جایگزین شود]
+                    </li>
+                    <li data-i18n="experience.refhub.achievement2">
+                      [مثلاً کاهش زمان اجرای یک فرآیند یا Query]
+                    </li>
+                    <li data-i18n="experience.refhub.achievement3">
+                      [مثلاً توسعه یک قابلیت که در محصول استفاده شده است]
+                    </li>
+                    <li data-i18n="experience.refhub.achievement4">
+                      [مثلاً رفع یک مشکل مهم یا بهبود بخشی از سیستم]
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ol>
+          <!-- GitHub -->
+          <p class="more-code" data-reveal>
+            <span data-i18n="experience.moreCode">
+              نمونه‌کدها، پروژه‌های شخصی و فعالیت‌های توسعه‌ای بیشتر در GitHub
+              من موجود است.
+            </span>
+            <a
+              href="https://github.com/MehdiKh-hub"
+              target="_blank"
+              rel="noopener"
+            >
+              github.com/MehdiKh-hub
+              <svg class="icon icon-sm" aria-hidden="true">
+                <use href="#i-external"></use>
+              </svg>
+            </a>
+          </p>
         </div>
-    </section>
+      </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-24 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="text-4xl font-bold mb-4">تحصیلات و گواهینامه‌ها</h2>
-                <div class="h-1 w-24 mx-auto gradient-bg"></div>
+      <!-- Education -->
+      <section id="education" class="section section-alt">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="kicker" data-i18n="education.kicker">تحصیلات</p>
+            <h2 class="section-title" data-i18n="education.heading">
+              تحصیلات و گواهینامه‌ها
+            </h2>
+          </header>
+
+          <div class="edu-grid">
+            <div class="edu-card" data-reveal>
+              <svg class="icon icon-lg" aria-hidden="true">
+                <use href="#i-cap"></use>
+              </svg>
+              <div class="edu-body">
+                <h3 data-i18n="education.degree">کارشناسی مهندسی کامپیوتر</h3>
+                <p class="edu-org" data-i18n="education.school">
+                  دانشگاه آزاد اسلامی، اسلامشهر
+                </p>
+                <p class="edu-date" data-i18n="education.schoolDate">
+                  ۱۴۰۱ — در حال تحصیل
+                </p>
+              </div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-purple-500/20 section-reveal">
-                    <h3 class="text-2xl font-semibold mb-6 gradient-text border-b border-gray-700 pb-4">تحصیلات آکادمیک</h3>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="text-xl font-bold text-purple-400 mb-2">کارشناسی مهندسی کامپیوتر</h4>
-                            <p class="text-gray-400">دانشگاه آزاد اسلامشهر</p>
-                        </div>
-                        <span class="bg-gray-700 text-sm px-4 py-2 rounded-full">1401 - در حال تحصیل</span>
-                    </div>
-                </div>
-
-                <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-purple-500/20 section-reveal">
-                    <h3 class="text-2xl font-semibold mb-6 gradient-text border-b border-gray-700 pb-4">گواهینامه‌های حرفه‌ای</h3>
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h4 class="text-xl font-bold text-purple-400 mb-2">BootCamp .NET Core</h4>
-                            <p class="text-gray-400">DaneshkarGroup</p>
-                        </div>
-                        <span class="bg-gray-700 text-sm px-4 py-2 rounded-full">1404/2 - 1403/5</span>
-                    </div>
-                </div>
+            <div class="edu-card" data-reveal>
+              <svg class="icon icon-lg" aria-hidden="true">
+                <use href="#i-briefcase"></use>
+              </svg>
+              <div class="edu-body">
+                <h3 data-i18n="education.cert">دوره بوت‌کمپ .NET Core</h3>
+                <p class="edu-org">DaneshkarGroup</p>
+                <p class="edu-date" data-i18n="education.certDate">
+                  مرداد ۱۴۰۳ — اردیبهشت ۱۴۰۴
+                </p>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 bg-gradient-to-b from-gray-900 to-black">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 section-reveal">
-                <h2 class="text-4xl font-bold mb-4">تماس با من</h2>
-                <div class="h-1 w-24 mx-auto gradient-bg"></div>
+      <!-- Contact -->
+      <section id="contact" class="section">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="kicker" data-i18n="contact.kicker">تماس</p>
+            <h2 class="section-title" data-i18n="contact.heading">
+              بیایید صحبت کنیم
+            </h2>
+            <p class="section-lead" data-i18n="contact.lead">
+              برای فرصت‌های همکاری، سوال یا فقط یک سلام، خوشحال می‌شوم پیام شما
+              را دریافت کنم.
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <div class="contact-info" data-reveal>
+              <a class="contact-row" href="mailto:mmahdikhodabande@gmail.com">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-mail"></use>
+                </svg>
+                <span>
+                  <span class="contact-label" data-i18n="contact.email"
+                    >ایمیل</span
+                  >
+                  <span class="contact-value">mmahdikhodabande@gmail.com</span>
+                </span>
+              </a>
+              <a class="contact-row" href="tel:+989937873489">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-phone"></use>
+                </svg>
+                <span>
+                  <span class="contact-label" data-i18n="contact.phone"
+                    >تلفن</span
+                  >
+                  <span
+                    class="contact-value"
+                    dir="ltr"
+                    data-i18n="contact.phoneValue"
+                    >0993 787 3489</span
+                  >
+                </span>
+              </a>
+              <span class="contact-row contact-row-static">
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-pin"></use>
+                </svg>
+                <span>
+                  <span class="contact-label" data-i18n="contact.location"
+                    >موقعیت</span
+                  >
+                  <span class="contact-value" data-i18n="hero.location"
+                    >تهران، ایران</span
+                  >
+                </span>
+              </span>
+              <a
+                class="contact-row"
+                href="https://mehdikh-hub.github.io/"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg class="icon" aria-hidden="true">
+                  <use href="#i-globe"></use>
+                </svg>
+                <span>
+                  <span class="contact-label" data-i18n="contact.website"
+                    >وب‌سایت</span
+                  >
+                  <span class="contact-value">mehdikh-hub.github.io</span>
+                </span>
+              </a>
             </div>
 
-            <div class="max-w-4xl mx-auto">
-                <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 p-10 rounded-2xl border border-purple-500/20 section-reveal">
-                    <div class="grid md:grid-cols-2 gap-8">
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-2xl">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">آدرس</h4>
-                                    <p class="text-gray-400">تهران ، پلاک 1</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-2xl">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">ایمیل</h4>
-                                    <a href="mailto:mmahdikhodabande@gmail.com" class="text-purple-400 hover:underline">mmahdikhodabande@gmail.com</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-2xl">
-                                    <i class="fas fa-phone-alt"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">تلفن</h4>
-                                    <a href="tel:+989937873489" class="text-purple-400 hover:underline">09937873489</a>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center text-2xl">
-                                    <i class="fas fa-globe"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">وبسایت</h4>
-                                    <a href="https://mehdikh-hub.github.io/" class="text-purple-400 hover:underline">My Site & Resume</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-10 pt-8 border-t border-gray-700">
-                        <h4 class="font-bold text-xl mb-6 text-center gradient-text">شبکه‌های اجتماعی</h4>
-                        <div class="flex justify-center gap-4">
-                            <a href="https://www.linkedin.com/in/m-mahdi-khodabande/" class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-xl card-hover">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://x.com/mehdi_kh_" class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-400 transition text-xl card-hover">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="https://github.com/MehdiKh-hub" class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-purple-600 transition text-xl card-hover">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.instagram.com/m_mahdi_khodabande?igsh=MWV3c2RucXN6ZmUyZA==" class="w-14 h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-pink-600 transition text-xl card-hover">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="contact-social" data-reveal>
+              <p class="contact-label" data-i18n="contact.elsewhere">
+                من را همچنین اینجا پیدا کنید
+              </p>
+              <ul class="social-list">
+                <li>
+                  <a
+                    href="https://www.linkedin.com/in/m-mahdi-khodabande/"
+                    target="_blank"
+                    rel="noopener"
+                    >LinkedIn</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/MehdiKh-hub"
+                    target="_blank"
+                    rel="noopener"
+                    >GitHub</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://x.com/mehdi_kh_"
+                    target="_blank"
+                    rel="noopener"
+                    >X (Twitter)</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/m_mahdi_khodabande"
+                    target="_blank"
+                    rel="noopener"
+                    >Instagram</a
+                  >
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-black py-8 border-t border-gray-800">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="text-lg font-bold gradient-text mb-4 md:mb-0">
-                    محمدمهدی خدابنده - Mohammad Mehdi Khodabandeh
-                </div>
-                <div class="text-gray-400">
-                    © 1404 تمامی حقوق محفوظ است
-                </div>
-            </div>
-        </div>
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span data-i18n="brand.full">محمدمهدی خدابنده</span>
+        <span class="footer-sep" aria-hidden="true">·</span>
+        <span data-i18n="footer.rights">تمامی حقوق محفوظ است</span>
+      </div>
     </footer>
 
-    <script>
-        // Particles Animation
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 30; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.width = Math.random() * 10 + 5 + 'px';
-                particle.style.height = particle.style.width;
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 15 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                container.appendChild(particle);
-            }
-        }
-        createParticles();
-
-        // Mobile Menu
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.remove('hidden');
-            document.getElementById('mobileMenu').classList.add('flex');
-        });
-        
-        document.getElementById('closeMenu').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.add('hidden');
-            document.getElementById('mobileMenu').classList.remove('flex');
-        });
-
-        // Smooth Scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.getElementById('mobileMenu').classList.add('hidden');
-                }
-            });
-        });
-
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.section-reveal');
-        const revealOnScroll = () => {
-            revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        };
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
-
-        // Skill Bars Animation
-        let skillsAnimated = false;
-        const animateSkills = () => {
-            const skillsSection = document.getElementById('skills');
-            const sectionTop = skillsSection.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            
-            if (sectionTop < windowHeight - 100 && !skillsAnimated) {
-                document.querySelectorAll('.skill-item').forEach(item => {
-                    const bar = item.querySelector('.skill-bar');
-                    const percent = item.getAttribute('data-skill');
-                    setTimeout(() => {
-                        bar.style.width = percent + '%';
-                    }, 200);
-                });
-                skillsAnimated = true;
-            }
-        };
-        window.addEventListener('scroll', animateSkills);
-        animateSkills();
-
-        // Typing Effect
-        const typingText = document.querySelector('.typing-effect');
-        if (typingText) {
-            const text = typingText.textContent;
-            typingText.textContent = '';
-            let i = 0;
-            const typeWriter = () => {
-                if (i < text.length) {
-                    typingText.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                }
-            };
-            setTimeout(typeWriter, 500);
-        }
-    </script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
